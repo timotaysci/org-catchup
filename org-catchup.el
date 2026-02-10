@@ -38,11 +38,12 @@
 ;;
 ;; Then use the following commands:
 ;;
-;;   M-x org-catchup-new          Generate or open a dated catch-up file
-;;   M-x org-catchup-capture      Quick-add a tagged item to capture.org
-;;   M-x org-catchup-open-capture Open capture.org
-;;   M-x org-catchup-open-actions Open actions.org
-;;   M-x org-catchup-open-team    Open team.org
+;;   M-x org-catchup-new           Generate or open a dated catch-up file
+;;   M-x org-catchup-capture       Quick-add a tagged item to capture.org
+;;   M-x org-catchup-sweep-inbox   Mark all Inbox TODOs as DONE after a call
+;;   M-x org-catchup-open-capture  Open capture.org
+;;   M-x org-catchup-open-actions  Open actions.org
+;;   M-x org-catchup-open-team     Open team.org
 ;;
 ;; The directory should contain:
 ;;
@@ -266,6 +267,31 @@ Inbox heading."
       (insert (format "** TODO %s\t\t\t\t\t\t\t:%s:\n" text tag))
       (save-buffer)
       (message "Captured: %s [:%s:]" text tag))))
+
+;;;###autoload
+(defun org-catchup-sweep-inbox ()
+  "Mark all TODO items under Inbox in capture.org as DONE.
+Run this after a catch-up to clear processed items so they are
+not pulled into the next catch-up file."
+  (interactive)
+  (let ((capture-file (org-catchup--file "capture.org"))
+        (count 0))
+    (with-current-buffer (find-file-noselect capture-file)
+      (org-mode)
+      (goto-char (point-min))
+      (unless (re-search-forward "^\\* Inbox" nil t)
+        (user-error "No * Inbox heading found in capture.org"))
+      (let ((end (save-excursion (org-end-of-subtree t) (point))))
+        (while (re-search-forward "^\\*+ TODO " end t)
+          (org-todo "DONE")
+          (setq count (1+ count))
+          (setq end (save-excursion
+                      (goto-char (point-min))
+                      (re-search-forward "^\\* Inbox" nil t)
+                      (org-end-of-subtree t)
+                      (point)))))
+      (save-buffer)
+      (message "Swept %d item%s to DONE" count (if (= count 1) "" "s")))))
 
 ;;;###autoload
 (defun org-catchup-open-capture ()

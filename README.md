@@ -61,8 +61,8 @@ Fill in `* Notes & New Actions` as you go. Update other sections live if needed.
 
 1. Move any new action items into `actions.org` as TODO headlines
 2. Mark completed actions as DONE in `actions.org` (so they stop carrying forward)
-3. Optionally fill in `* Retrospective`
-4. Clean out processed items from `capture.org` if you like
+3. Run `M-x org-catchup-sweep-inbox` to mark all captured items as DONE (so they don't appear in the next catch-up)
+4. Optionally fill in `* Retrospective`
 
 ## Commands
 
@@ -70,6 +70,7 @@ Fill in `* Notes & New Actions` as you go. Update other sections live if needed.
 |---|---|
 | `M-x org-catchup-new` | Generate (or open) a dated catch-up file |
 | `M-x org-catchup-capture` | Quick-add a tagged item to `capture.org` |
+| `M-x org-catchup-sweep-inbox` | Mark all Inbox TODOs as DONE after a call |
 | `M-x org-catchup-open-capture` | Open `capture.org` |
 | `M-x org-catchup-open-actions` | Open `actions.org` |
 | `M-x org-catchup-open-team` | Open `team.org` |
