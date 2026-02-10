@@ -81,14 +81,11 @@ The package is loaded via `use-package` in your init:
 ```elisp
 (use-package org-catchup
   :load-path "/path/to/org-catchup/"
+  :custom (org-catchup-directory "~/my-catchups/")
   :commands (org-catchup-new org-catchup-capture org-catchup-open-capture org-catchup-open-actions org-catchup-open-team))
 ```
 
-To change the root directory, set `org-catchup-directory` before loading:
-
-```elisp
-(setq org-catchup-directory "~/some/other/path/")
-```
+The directory defaults to `~/org-catchup/`. All configuration uses `defcustom`, so you can also use `M-x customize-group RET org-catchup` to set options interactively.
 
 ## Example: actions.org
 

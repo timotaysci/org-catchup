@@ -4,3 +4,4 @@ team.org
 capture.org
 actions.org
 .claude/
+*.elc
