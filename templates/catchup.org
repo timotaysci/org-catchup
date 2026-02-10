@@ -1,0 +1,30 @@
+#+TITLE: Catch-up: %DATE%
+#+DATE: %DATE%
+
+* Open Actions from Previous                                     :review:
+  (Carried forward automatically from actions.org)
+
+* Key Updates                                                    :status:
+  Brief status on major workstreams. 2-3 sentences each, max.
+  - What moved forward
+  - What's on track / off track
+
+* Decisions Needed                                            :decision:
+  Items requiring their input, approval, or steer.
+  Frame as: context → options → your recommendation.
+
+* Risks & Escalations                                            :risk:
+  Things they need to know about or help unblock.
+
+* Team Highlights                                           :highlight:
+  Achievements, good work, growth moments.
+  (This is how your team gets visible to leadership.)
+
+* Resource & Support Asks                                         :ask:
+  What you need from them — budget, air cover, introductions, decisions.
+
+* Notes & New Actions                                          :action:
+  (Fill in during the call)
+
+* Retrospective                                               :retro:
+  After the call: what went well, what to do differently next time.
